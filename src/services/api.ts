@@ -1,4 +1,3 @@
-
 import { Match, Session, Swipe, User } from '@/types';
 import { toast } from 'sonner';
 
@@ -126,8 +125,11 @@ class ApiService {
             matched_at: newMatch.matched_at
           });
 
-          // Return a success with match notification - now with custom styling
-          toast.success(`You matched with ${matchedUser.first_name}!`, {
+          // Construct full name for the notification
+          const fullName = matchedUser.first_name + (matchedUser.last_name ? ` ${matchedUser.last_name}` : '');
+
+          // Return a success with match notification - now with full name and custom styling
+          toast.success(`You matched with ${fullName}!`, {
             style: {
               backgroundColor: '#8B5CF6', // Vibrant purple color
               color: 'white',
