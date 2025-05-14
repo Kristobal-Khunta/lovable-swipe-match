@@ -18,7 +18,7 @@ const MainContent = () => {
   const { currentSession } = useApp();
 
   return (
-    <div className="container max-w-md mx-auto py-8 px-4">
+    <div className="container mx-auto py-8 px-4">
       {currentSession ? <AppLayout /> : <UserSelection />}
     </div>
   );

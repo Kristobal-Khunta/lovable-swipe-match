@@ -4,6 +4,8 @@ export interface User {
   first_name: string;
   last_name: string;
   description: string;
+  specialization?: string;
+  activity?: string;
 }
 
 export interface Swipe {

@@ -16,21 +16,27 @@ const UserSelection = () => {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Select Your Profile</h2>
+    <div className="w-full max-w-5xl mx-auto">
+      <h2 className="text-2xl font-bold mb-4 text-center">Select Your Profile</h2>
       
       {loading ? (
         <div className="flex justify-center p-8">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
         </div>
       ) : (
-        <div className="space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {users.map((user) => (
-            <Card key={user.id}>
+            <Card key={user.id} className="h-full flex flex-col">
               <CardHeader className="pb-2">
-                <CardTitle>{user.first_name} {user.last_name}</CardTitle>
+                <CardTitle className="text-base">{user.first_name} {user.last_name}</CardTitle>
+                {user.specialization && (
+                  <CardDescription>{user.specialization}</CardDescription>
+                )}
+                {user.activity && (
+                  <CardDescription className="font-medium">{user.activity}</CardDescription>
+                )}
               </CardHeader>
-              <CardFooter>
+              <CardFooter className="mt-auto">
                 <Button 
                   onClick={() => handleSelectUser(user.id)}
                   disabled={loading}

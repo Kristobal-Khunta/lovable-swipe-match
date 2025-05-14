@@ -137,22 +137,67 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   };
 
-  // Initialize demo data
+  // Initialize demo data with the provided user information
   const initDemoData = async () => {
     setLoading(true);
     try {
-      // Sample users for our demo
+      // Updated users with the provided information
       const demoUsers: User[] = [
-        { id: 1, first_name: "Alice", last_name: "Smith", description: "Loves hiking and music." },
-        { id: 2, first_name: "Bob", last_name: "Johnson", description: "Coffee enthusiast." },
-        { id: 3, first_name: "Carol", last_name: "Williams", description: "Bookworm and painter." },
-        { id: 4, first_name: "David", last_name: "Brown", description: "Tech geek and foodie." },
-        { id: 5, first_name: "Emma", last_name: "Jones", description: "Yoga instructor and travel blogger." },
-        { id: 6, first_name: "Frank", last_name: "Garcia", description: "Amateur photographer and dog lover." },
-        { id: 7, first_name: "Grace", last_name: "Miller", description: "Professional chef and marathon runner." },
-        { id: 8, first_name: "Henry", last_name: "Davis", description: "Software engineer and guitar player." },
-        { id: 9, first_name: "Ivy", last_name: "Rodriguez", description: "Fashion designer with a passion for vintage." },
-        { id: 10, first_name: "Jack", last_name: "Wilson", description: "Financial analyst and weekend hiker." }
+        { id: 1, first_name: "Абдрашитов", last_name: "Данияр", description: "Full-stack developer", specialization: "Технический специалист", activity: "Full-stack developer" },
+        { id: 2, first_name: "Абильмажинова", last_name: "Зарина", description: "Product Manager", specialization: "Бизнес-специалист", activity: "Product Manager" },
+        { id: 3, first_name: "Азамат", last_name: "Куздибаев", description: "ML engineer", specialization: "Технический специалист", activity: "ML engineer" },
+        { id: 4, first_name: "Актау", last_name: "Алия Ержановна", description: "Entrepreneur", specialization: "Бизнес-специалист", activity: "Entrepreneur" },
+        { id: 5, first_name: "Андасбек", last_name: "Нургиса", description: "Entrepreneur", specialization: "Бизнес-специалист", activity: "Entrepreneur" },
+        { id: 6, first_name: "Арынов", last_name: "Адильбек", description: "Producer", specialization: "Креативная индустрия", activity: "Producer" },
+        { id: 7, first_name: "Байжигитова", last_name: "Венера", description: "Entrepreneur", specialization: "Бизнес-специалист", activity: "Entrepreneur" },
+        { id: 8, first_name: "Бекахметов", last_name: "Габит", description: "Entrepreneur", specialization: "Бизнес-специалист", activity: "Entrepreneur" },
+        { id: 9, first_name: "Беляков", last_name: "Максим", description: "Entrepreneur", specialization: "Технический специалист", activity: "Entrepreneur" },
+        { id: 10, first_name: "Голдин", last_name: "Максим", description: "ML&DL Engineer", specialization: "Технический специалист", activity: "ML&DL Engineer" },
+        { id: 11, first_name: "Данай", last_name: "Ерасыл", description: "Software Engineer", specialization: "Технический специалист", activity: "Software Engineer" },
+        { id: 12, first_name: "Джунусов", last_name: "Динмухамед", description: "Python Developer", specialization: "Технический специалист", activity: "Python Developer" },
+        { id: 13, first_name: "Душниязова", last_name: "Диана", description: "Entrepreneur", specialization: "Бизнес-специалист", activity: "Entrepreneur" },
+        { id: 14, first_name: "Ермаченкова", last_name: "Маргарита", description: "Data Analyst", specialization: "Технический специалист", activity: "Data Analyst" },
+        { id: 15, first_name: "Жали", last_name: "Алмас", description: "Entrepreneur", specialization: "Бизнес-специалист", activity: "Entrepreneur" },
+        { id: 16, first_name: "Жанатова", last_name: "Назерке", description: "AI x Travel Explorer", specialization: "Бизнес-специалист", activity: "AI x Travel Explorer" },
+        { id: 17, first_name: "Захаров", last_name: "Геннадий", description: "Marketing manager", specialization: "Бизнес-специалист", activity: "Marketing manager" },
+        { id: 18, first_name: "Исхаков", last_name: "Ринат", description: "Buiness developer / Mentor", specialization: "Бизнес-специалист", activity: "Buiness developer / Mentor" },
+        { id: 19, first_name: "Козловский", last_name: "Антон", description: "Entrepreneur", specialization: "Бизнес-специалист", activity: "Entrepreneur" },
+        { id: 20, first_name: "Кононов", last_name: "Иван", description: "AI R&D", specialization: "Бизнес-специалист", activity: "AI R&D" },
+        { id: 21, first_name: "Кусаинов", last_name: "Аслан", description: "Project manager", specialization: "Бизнес-специалист", activity: "Project manager" },
+        { id: 22, first_name: "Қошанов", last_name: "Мағжан", description: "Entrepreneur", specialization: "Бизнес-специалист", activity: "Entrepreneur" },
+        { id: 23, first_name: "Лапин", last_name: "Александр", description: "Product Manager", specialization: "Бизнес-специалист", activity: "Product Manager" },
+        { id: 24, first_name: "Лесбек", last_name: "Нұрдәулет", description: "Entrepreneur", specialization: "Бизнес-специалист", activity: "Entrepreneur" },
+        { id: 25, first_name: "Мадиев", last_name: "Саятжан", description: "Entrepreneur", specialization: "Бизнес-специалист", activity: "Entrepreneur" },
+        { id: 26, first_name: "Максат", last_name: "Бекес", description: "Entrepreneur", specialization: "Технический специалист", activity: "Entrepreneur" },
+        { id: 27, first_name: "Нурай", last_name: "Момбекова", description: "Venture Capital", specialization: "Бизнес-специалист", activity: "Venture Capital" },
+        { id: 28, first_name: "Нурманов", last_name: "Мади", description: "Delivery Manager", specialization: "Бизнес-специалист", activity: "Delivery Manag" },
+        { id: 29, first_name: "Ораккызы", last_name: "Макпал", description: "Entrepreneur", specialization: "Бизнес-специалист", activity: "Entrepreneur" },
+        { id: 30, first_name: "Самыратов", last_name: "Жанибек", description: "Operations Manager", specialization: "Бизнес-специалист", activity: "Operations Manager" },
+        { id: 31, first_name: "Тауекел", last_name: "Ерасыл", description: "Entrepreneur", specialization: "Бизнес-специалист", activity: "Entrepreneur" },
+        { id: 32, first_name: "Тезекбаев", last_name: "Дінмұхамед", description: "Developer", specialization: "Технический специалист", activity: "Developer" },
+        { id: 33, first_name: "Тришкин", last_name: "Артур", description: "Marketing manager", specialization: "Бизнес-специалист", activity: "Marketing manager" },
+        { id: 34, first_name: "Улугбек", last_name: "Шарипов", description: "Entrepreneur", specialization: "Бизнес-специалист", activity: "Entrepreneur" },
+        { id: 35, first_name: "Умербеков", last_name: "Асылбек", description: "Entrepreneur", specialization: "Бизнес-специалист", activity: "Entrepreneur" },
+        { id: 36, first_name: "Хорев", last_name: "Владислав", description: "Principal C++ Developer", specialization: "Технический специалист", activity: "Principal C++ Developer" },
+        { id: 37, first_name: "Чингисхан", last_name: "Калдыбаев", description: "Entrepreneur", specialization: "Бизнес-специалист", activity: "Entrepreneur" },
+        { id: 38, first_name: "Айгерим", last_name: "Нургалиева", description: "Entrepreneur", specialization: "Бизнес-специалист", activity: "Entrepreneur" },
+        { id: 39, first_name: "Айым", last_name: "Калдыхан", description: "Accountant", specialization: "Бизнес-специалист", activity: "Accountant" },
+        { id: 40, first_name: "Аминэ", last_name: "Кадыр", description: "Entrepreneur", specialization: "Бизнес-специалист", activity: "Entrepreneur" },
+        { id: 41, first_name: "Амир", last_name: "Жакышев", description: "Blockchain Researcher", specialization: "Бизнес-специалист", activity: "Blockchain Researcher" },
+        { id: 42, first_name: "Баян", last_name: "Конирбаев", description: "IT Engineer", specialization: "Бизнес-специалист", activity: "IT Engineer" },
+        { id: 43, first_name: "Дана", last_name: "Исабаева", description: "Strategic Business Development Advisor", specialization: "Бизнес-специалист", activity: "Strategic Business Development Advisor" },
+        { id: 44, first_name: "Дмитрий", last_name: "Волынов", description: "Data Science Specialist", specialization: "Технический специалист", activity: "Data Science Specialist" },
+        { id: 45, first_name: "Евгений", last_name: "Дука", description: "iOS Developer", specialization: "Технический специалист", activity: "iOS Developer" },
+        { id: 46, first_name: "Гани", last_name: "Абадан", description: "Creator", specialization: "Бизнес-специалист", activity: "Creator" },
+        { id: 47, first_name: "Григорий", last_name: "Спиров", description: "AI Research Engineer", specialization: "Технический специалист", activity: "AI Research Engineer" },
+        { id: 48, first_name: "Морозова", last_name: "Елизавета", description: "Technical artist", specialization: "Бизнес-специалист", activity: "Technical artist" },
+        { id: 49, first_name: "Ник", last_name: "Макфлай", description: "Entrepreneur", specialization: "Бизнес-специалист", activity: "Entrepreneur" },
+        { id: 50, first_name: "Нурислам", last_name: "Аширматов", description: "Entrepreneur", specialization: "Бизнес-специалист", activity: "Entrepreneur" },
+        { id: 51, first_name: "Сапарали", last_name: "Тогжан", description: "Marketing manager", specialization: "Бизнес-специалист", activity: "Marketing manager" },
+        { id: 52, first_name: "Саят", last_name: "Оразкулов", description: "Engineering Manager", specialization: "Технический специалист", activity: "Engineering Manager" },
+        { id: 53, first_name: "Султан", last_name: "Арапов", description: "Data Engineer", specialization: "Технический специалист", activity: "Data Engineer" },
+        { id: 54, first_name: "Тилегенов", last_name: "Аян", description: "AI Manager", specialization: "Бизнес-специалист", activity: "AI Manager" },
+        { id: 55, first_name: "Тина", last_name: "Джапиашвили", description: "Blockchain", specialization: "Технический специалист", activity: "Blockchain" }
       ];
       
       await apiService.bulkLoadUsers(demoUsers);
