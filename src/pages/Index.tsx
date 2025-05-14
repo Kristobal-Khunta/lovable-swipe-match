@@ -1,8 +1,7 @@
 
-import { useApp } from '@/context/AppContext';
 import AppLayout from '@/components/AppLayout';
 import UserSelection from '@/components/UserSelection';
-import { AppProvider } from '@/context/AppContext';
+import { AppProvider, useApp } from '@/context/AppContext';
 
 const Index = () => {
   return (
