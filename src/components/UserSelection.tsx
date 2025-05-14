@@ -11,6 +11,10 @@ const UserSelection = () => {
     loadUsers();
   }, []);
 
+  const handleSelectUser = async (userId: number) => {
+    await startSession(userId);
+  };
+
   return (
     <div className="w-full max-w-md mx-auto">
       <h2 className="text-2xl font-bold mb-4">Select Your Profile</h2>
@@ -28,7 +32,7 @@ const UserSelection = () => {
               </CardHeader>
               <CardFooter>
                 <Button 
-                  onClick={() => startSession(user.id)}
+                  onClick={() => handleSelectUser(user.id)}
                   disabled={loading}
                   className="w-full"
                 >

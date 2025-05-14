@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Match, Session, User } from '@/types';
 import apiService from '@/services/api';

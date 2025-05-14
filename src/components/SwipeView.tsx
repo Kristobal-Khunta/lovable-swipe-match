@@ -1,9 +1,17 @@
 
 import { useApp } from '@/context/AppContext';
 import UserCard from './UserCard';
+import { useEffect } from 'react';
 
 const SwipeView = () => {
-  const { candidate, submitSwipe, loadingSwipe } = useApp();
+  const { candidate, submitSwipe, loadingSwipe, getNextCandidate } = useApp();
+
+  // Убедимся, что у нас есть кандидат при монтировании компонента
+  useEffect(() => {
+    if (!candidate && !loadingSwipe) {
+      getNextCandidate();
+    }
+  }, [candidate, loadingSwipe, getNextCandidate]);
 
   if (loadingSwipe && !candidate) {
     return (
