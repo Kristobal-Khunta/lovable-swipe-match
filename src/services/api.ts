@@ -1,4 +1,3 @@
-
 import { Match, Session, Swipe, User } from '@/types';
 import { toast } from 'sonner';
 
@@ -153,6 +152,38 @@ class ApiService {
   // End the current session
   endSession(): void {
     this.currentSession = null;
+  }
+
+  // Reset all matches for the current user
+  async resetMatches(sessionId?: string): Promise<{ status: string }> {
+    if (!this.validateSession(sessionId)) {
+      throw new Error('Invalid session');
+    }
+
+    const userId = this.currentSession!.user.id;
+    
+    // Remove all matches for current user
+    if (this.matches[userId]) {
+      // For each match the user has
+      const matchedUserIds = this.matches[userId].map(match => match.user_id);
+      
+      // Clear the user's matches
+      delete this.matches[userId];
+      
+      // Also remove this user from other users' matches
+      matchedUserIds.forEach(matchedUserId => {
+        if (this.matches[matchedUserId]) {
+          this.matches[matchedUserId] = this.matches[matchedUserId].filter(
+            match => match.user_id !== userId
+          );
+        }
+      });
+      
+      // Also remove all swipes from this user
+      this.swipes = this.swipes.filter(swipe => swipe.from_user_id !== userId);
+    }
+
+    return { status: 'success' };
   }
 }
 

@@ -18,6 +18,7 @@ interface AppContextType {
   submitSwipe: (toUserId: number, isLike: boolean) => Promise<void>;
   getMatches: () => Promise<void>;
   initDemoData: () => Promise<void>;
+  resetMatches: () => Promise<void>;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -211,6 +212,26 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   };
 
+  // Reset matches for the current user
+  const resetMatches = async () => {
+    if (!currentSession) return;
+    
+    setLoading(true);
+    try {
+      await apiService.resetMatches(currentSession.session_id);
+      setMatches([]);
+      toast.success('Matches reset successfully');
+      
+      // Get a new candidate after resetting matches
+      await getNextCandidate();
+    } catch (error) {
+      console.error('Failed to reset matches:', error);
+      toast.error('Failed to reset matches');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // Initialize the app with demo data
   useEffect(() => {
     initDemoData();
@@ -230,7 +251,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     getNextCandidate,
     submitSwipe,
     getMatches,
-    initDemoData
+    initDemoData,
+    resetMatches
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
