@@ -1,3 +1,4 @@
+
 import { Match, Session, Swipe, User } from '@/types';
 import { toast } from 'sonner';
 
@@ -125,8 +126,15 @@ class ApiService {
             matched_at: newMatch.matched_at
           });
 
-          // Return a success with match notification
-          toast.success(`You matched with ${matchedUser.first_name}!`);
+          // Return a success with match notification - now with custom styling
+          toast.success(`You matched with ${matchedUser.first_name}!`, {
+            style: {
+              backgroundColor: '#8B5CF6', // Vibrant purple color
+              color: 'white',
+              border: '1px solid #7C3AED',
+              fontWeight: 'bold',
+            },
+          });
         }
       }
     }
